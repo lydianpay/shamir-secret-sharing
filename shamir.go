@@ -5,7 +5,7 @@ import (
 	"math/rand/v2"
 )
 
-// GenerateShares takes in a secret and splits it into n shares
+// GenerateShares takes in a secret and splits it into n shares, not greater than 255 shares
 // Threshold is the minimum number of shares required to reconstruct the secret
 func GenerateShares(secret []byte, numberOfShares, threshold int) ([][]byte, error) {
 	if numberOfShares < threshold || numberOfShares > 255 {

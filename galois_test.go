@@ -53,10 +53,9 @@ func TestDivideGF(t *testing.T) {
 		}
 	}
 
-	// Testing for failure when the denominator is 0
+	// Negative Tests
 	_, err := divideGF(7, 0)
 	if err == nil {
-		t.Fatal("Expected an error")
+		t.Fatal("Expected an error when the denominator is 0")
 	}
-
 }

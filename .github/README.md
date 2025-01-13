@@ -8,8 +8,16 @@
 [![CodeQL](https://github.com/Tether-Payments/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Tether-Payments/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql)
 
 </div>
+
 Written in Go ('Golang' for search engines) with zero external dependencies, this package implements
-[Shamir's Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing).
+[Shamir's Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing). Shamir's Secret Sharing (SSS) is used to distribute a secret amongst a group, wherein a
+quorum must be achieved to reconstruct the original secret. No individual shareholder can recreate the secret alone.
+
+Shamir's Secret Sharing is information-theoretically secure and perfectly secure since no information about the secret
+is revealed without the quorum (threshold) of shares being achieved.
+
+Using this package, you can split a secret into <i>n</i> shares, which can only be reconstructed if the threshold of
+shares you choose is met.
 
 ---
 
@@ -73,6 +81,3 @@ func main() {
 	fmt.Println("Reconstructed Secret: ", reconstructedSecret)
 }
 ```
-
-## Contributing
-TBD

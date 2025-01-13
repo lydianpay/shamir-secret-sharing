@@ -1,7 +1,7 @@
 package shamir
 
 import (
-	cryptorand "crypto/rand"
+	"crypto/rand"
 )
 
 // generatePolynomial constructs a random polynomial with the given intercept
@@ -14,7 +14,7 @@ func generatePolynomial(intercept, threshold uint8) ([]byte, error) {
 	polynomial[0] = intercept
 
 	// Fill the rest of the polynomial with cryptographically secure random bytes
-	if _, err := cryptorand.Read(polynomial[1:]); err != nil {
+	if _, err := rand.Read(polynomial[1:]); err != nil {
 		return polynomial, err
 	}
 
