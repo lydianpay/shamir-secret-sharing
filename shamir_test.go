@@ -29,6 +29,32 @@ func TestGenerateShares(t *testing.T) {
 			}
 		}
 	}
+
+	// Negative Tests
+	_, err := GenerateShares([]byte{}, 6, 3)
+	if err == nil {
+		t.Error("Expected error when using an empty secret")
+	}
+
+	_, err = GenerateShares(secret, 4, 6)
+	if err == nil {
+		t.Error("Expected error when calculating fewer shares than the threshold")
+	}
+
+	_, err = GenerateShares(secret, 381, 6)
+	if err == nil {
+		t.Error("Expected error when calculating more than 255 shares")
+	}
+
+	_, err = GenerateShares(secret, 6, 1)
+	if err == nil {
+		t.Error("Expected error when using a threshold less than 2")
+	}
+
+	_, err = GenerateShares(secret, 6, 381)
+	if err == nil {
+		t.Error("Expected error when using a threshold greater than 255")
+	}
 }
 
 func TestReconstructShares(t *testing.T) {
@@ -61,5 +87,30 @@ func TestReconstructShares(t *testing.T) {
 			t.Errorf("Expected secret %s, got %s", secret, reconstructedSecret)
 		}
 
+	}
+
+	// Negative Tests
+	badShares := [][]byte{[]byte{3}}
+	_, err := Reconstruct(badShares)
+	if err == nil {
+		t.Error("Expected error when passing fewer than 2 shares")
+	}
+
+	badShares = [][]byte{{3}, {4}, {5}}
+	_, err = Reconstruct(badShares)
+	if err == nil {
+		t.Error("Expected error when share length is less than 2")
+	}
+
+	badShares = [][]byte{{1, 2, 3, 4}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5, 6}}
+	_, err = Reconstruct(badShares)
+	if err == nil {
+		t.Error("Expected error when share length is not all the same")
+	}
+
+	badShares = [][]byte{{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}}
+	_, err = Reconstruct(badShares)
+	if err == nil {
+		t.Error("Expected error when shares collide (force denominator to be 0 for interpolation)")
 	}
 }

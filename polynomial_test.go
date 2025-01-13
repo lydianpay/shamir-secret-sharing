@@ -62,4 +62,10 @@ func TestInterpolate(t *testing.T) {
 			t.Errorf("Expected secret of %d, but got %d", secrets[idx], secret)
 		}
 	}
+
+	_, err := interpolate([]byte{41, 41}, []byte{7, 7})
+	if err == nil {
+		t.Errorf("Expected error when interpolating an x sample denominator of 0")
+	}
+
 }
