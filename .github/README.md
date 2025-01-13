@@ -1,5 +1,13 @@
 # Shamir's Secret Sharing Algorithm
+---
+<div align="center">
 
+[![Go Report Card](https://goreportcard.com/badge/Tether-Payments/shamir-secret-sharing)](https://goreportcard.com/report/Tether-Payments/shamir-secret-sharing)
+[![codecov](https://codecov.io/gh/Tether-Payments/shamir-secret-sharing/graph/badge.svg?token=TBTZIA620I)](https://codecov.io/gh/Tether-Payments/shamir-secret-sharing)
+[![Maintainability](https://api.codeclimate.com/v1/badges/314cd38ef7019cac4d7b/maintainability)](https://codeclimate.com/github/Tether-Payments/shamir-secret-sharing/maintainability)
+[![CodeQL](https://github.com/Tether-Payments/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Tether-Payments/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql)
+
+</div>
 Written in Go ('Golang' for search engines) with zero external dependencies, this package implements
 [Shamir's Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing).
 
