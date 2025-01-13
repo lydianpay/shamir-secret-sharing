@@ -62,7 +62,11 @@ func TestReconstructShares(t *testing.T) {
 	secrets := [][]byte{
 		[]byte("Yo Cuz!"),
 		[]byte("1632c1ee-8a67-40c3-92a2-8404f100e15f"),
-		[]byte("mmdjphbfkdjkxpowjumccoyivysdfkxsgzbvdlxfllzvszggfozlwsyryggastbpvxdmetsazvtapyferrodlerplldmdyccivrxwtxmvlivnuaniqyrfykdwzebrflqixgdmpzgdmuxmdwopvvxunjxdbwxizhkpuudamugbglwyxdfdlpyjxhuraolmrpafvivinthnazmwarajcvxlwqptwrrfpoxcuynrukymsmbcovjtdongfyhlzzdxuusgkgaourfaysvmlgmusvcmpmyclbaccnrgtgmdcmoomfhajmdsnwepalqemmddywlviolhobzsndwfwpijwuldgeedwvyoxamtjbgbkxeuvrvdkhaolynrvpbyxmdvzvbguqlmanovgzlsvokgzcpabmsaikzfofmgmvnfekacstqepwrnnrzlkmumopcmuygukvyamuvgouzktfvvgqpzjbchhyeokafdvjjwzbjoxffoqwjstmjwzcnsvfxxehe"),
+		[]byte("mmdjphbfkdjkxpowjumccoyivysdfkxsgzbvdlxfllzvszggfozlwsyryggastbpvxdmetsazvtapyferrodlerplldmdyccivrx" +
+			"wtxmvlivnuaniqyrfykdwzebrflqixgdmpzgdmuxmdwopvvxunjxdbwxizhkpuudamugbglwyxdfdlpyjxhuraolmrpafvivinthnaz" +
+			"mwarajcvxlwqptwrrfpoxcuynrukymsmbcovjtdongfyhlzzdxuusgkgaourfaysvmlgmusvcmpmyclbaccnrgtgmdcmoomfhajmdsn" +
+			"wepalqemmddywlviolhobzsndwfwpijwuldgeedwvyoxamtjbgbkxeuvrvdkhaolynrvpbyxmdvzvbguqlmanovgzlsvokgzcpabmsa" +
+			"ikzfofmgmvnfekacstqepwrnnrzlkmumopcmuygukvyamuvgouzktfvvgqpzjbchhyeokafdvjjwzbjoxffoqwjstmjwzcnsvfxxehe"),
 	}
 	numberOfShares := []int{4, 6, 8}
 	thresholds := []int{2, 3, 6}
@@ -86,11 +90,10 @@ func TestReconstructShares(t *testing.T) {
 		if bytes.Compare(reconstructedSecret, secret) != 0 {
 			t.Errorf("Expected secret %s, got %s", secret, reconstructedSecret)
 		}
-
 	}
 
 	// Negative Tests
-	badShares := [][]byte{[]byte{3}}
+	badShares := [][]byte{{3}}
 	_, err := Reconstruct(badShares)
 	if err == nil {
 		t.Error("Expected error when passing fewer than 2 shares")
