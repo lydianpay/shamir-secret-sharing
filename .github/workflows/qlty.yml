@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Go
-        uses: actions/setup-go@v5.2.0
+        uses: actions/setup-go@v5.5.0
 
       - name: Install dependencies
         run: go mod download
@@ -22,7 +22,7 @@ jobs:
       - name: Run tests
         run: go test -coverprofile=coverage.txt
 
-      - name: Upload results to Codecov
-        uses: codecov/codecov-action@v5.1.2
+      - uses: qltysh/qlty-action/coverage@v1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: {{secrets.QLTY_COVERAGE_TOKEN}}
+          files: cover.out

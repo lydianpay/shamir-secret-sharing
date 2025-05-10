@@ -2,11 +2,9 @@
 ---
 <div align="center">
 
-[![Go Report Card](https://goreportcard.com/badge/Tether-Payments/shamir-secret-sharing)](https://goreportcard.com/report/Tether-Payments/shamir-secret-sharing)
-[![codecov](https://codecov.io/gh/Tether-Payments/shamir-secret-sharing/graph/badge.svg?token=TBTZIA620I)](https://codecov.io/gh/Tether-Payments/shamir-secret-sharing)
-[![Maintainability](https://api.codeclimate.com/v1/badges/314cd38ef7019cac4d7b/maintainability)](https://codeclimate.com/github/Tether-Payments/shamir-secret-sharing/maintainability)
-[![CodeQL](https://github.com/Tether-Payments/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Tether-Payments/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql)
-
+[![Go Report Card](https://goreportcard.com/badge/tetherpay/shamir-secret-sharing)](https://goreportcard.com/report/tetherpay/shamir-secret-sharing)
+[![Code Coverage](https://qlty.sh/badges/5a554af9-43ec-4866-b543-280fedae013d/test_coverage.svg)](https://qlty.sh/gh/tetherpay/projects/shamir-secret-sharing)[![Maintainability](https://qlty.sh/badges/5a554af9-43ec-4866-b543-280fedae013d/maintainability.svg)](https://qlty.sh/gh/tetherpay/projects/shamir-secret-sharing)
+[![CodeQL](https://github.com/tetherpay/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/tetherpay/shamir-secret-sharing/actions/workflows/github-code-scanning/codeql)
 </div>
 
 Written in Go ('Golang' for search engines) with zero external dependencies, this package implements
@@ -33,7 +31,7 @@ go get -u github.com/tether-payments/shamir-secret-sharing
 package main
 
 import (
-    "github.com/Tether-Payments/shamir-secret-sharing"
+    "github.com/tetherpay/shamir-secret-sharing"
 )
 ```
 3. Create n number of shares
@@ -58,7 +56,7 @@ import (
 )
 
 func main() {
-	secret := []byte("Tether Payments Rocks!") // Replace with your secret
+	secret := []byte("TetherPay Rocks!") // Replace with your secret
 	numberOfShares := 6                        // Number of shares to be created
 	threshold := 3                             // Minimum number of shares required to reconstruct the secret
 

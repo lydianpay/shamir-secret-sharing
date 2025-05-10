@@ -1,3 +1,3 @@
-module github.com/Tether-Payments/shamir-secret-sharing
+module github.com/tetherpay/shamir-secret-sharing
 
-go 1.23.4
+go 1.24.1
